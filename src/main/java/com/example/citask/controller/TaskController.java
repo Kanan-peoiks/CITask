@@ -3,7 +3,7 @@ package com.example.citask.controller;
 
 
 import com.example.citask.entity.Task;
-import com.example.citask.service.TaskService;
+import com.example.citask.service.impl.TaskServiceImpl;
 import lombok.Data;
 import org.springframework.web.bind.annotation.*;
 
@@ -14,9 +14,9 @@ import java.util.List;
 @Data
 public class TaskController {
 
-    private final TaskService taskService;
+    private final TaskServiceImpl taskService;
 
-    public TaskController(TaskService taskService) {
+    public TaskController(TaskServiceImpl taskService) {
         this.taskService = taskService;
     }
 
