@@ -12,9 +12,9 @@ public interface TaskServiceImpl {
 
     Task getById(Long id);
 
-    Task updateTask(Task task);
+    Task updateTask(Long id, Task task);
 
-    Task updateTask(Long id, Task updatedTask);
+
 
     void deleteById(Long id);
 }

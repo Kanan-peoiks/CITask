@@ -5,6 +5,8 @@ import com.example.citask.entity.Task;
 import com.example.citask.repo.TaskRepo;
 import com.example.citask.service.impl.TaskServiceImpl;
 import lombok.Data;
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -12,6 +14,8 @@ import java.util.List;
 
 @Service
 @Data
+@Getter
+@Setter
 public class TaskService implements TaskServiceImpl {
 
     private final TaskRepo taskRepo;
@@ -34,21 +38,21 @@ public class TaskService implements TaskServiceImpl {
                 .orElseThrow(() -> new RuntimeException("Task not found with id: " + id));
     }
 
-
     @Override
-    public Task updateTask(Long id, Task updatedTask) {
-        Task existingTask = getTaskById(id);
+    public Task updateTask(Long id, Task task) {
+        Task existingTask = getById(id);
 
-        existingTask.setTitle(updatedTask.getTitle());
-        existingTask.setDescription(updatedTask.getDescription());
-        existingTask.setCompleted(updatedTask.isCompleted());
+        existingTask.setTitle(task.getTitle());
+        existingTask.setDescription(task.getDescription());
+        existingTask.setCompleted(task.isCompleted());
 
-        return taskRepository.save(existingTask);
+        return taskRepo.save(existingTask);
     }
+
 
     @Override
     public void deleteById(Long id) {
-        Task task = getTaskById(id);
-        taskRepository.delete(task);
+        Task task = getById(id);
+        taskRepo.delete(task);
     }
 }

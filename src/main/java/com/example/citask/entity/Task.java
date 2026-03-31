@@ -23,8 +23,9 @@ public class Task {
 
     private String description;
 
-    private String completed;
+    private boolean completed;
 
     private LocalDateTime createdAt;
+
 
 }
